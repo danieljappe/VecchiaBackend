@@ -1,4 +1,4 @@
-package com.example.vecchiabackend.model;
+package com.kodeklubben.vecchiabackend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.vecchiabackend.model;
+package com.kodeklubben.vecchiabackend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,12 +11,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Orders")
-public class Order {
+@Table(name = "Employees")
+public class MenuItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "OrderID")
+    @Column(name = "ItemID")
     private int itemID;
 
     @Column(name = "Name", length = 100)
@@ -28,10 +28,6 @@ public class Order {
     @Column(name = "Price")
     private double price;
 
-    @Column(name = "Phone")
-    private String number;
-
-    @Column(name = "Email")
-    private String email;
-
+    @Column(name = "Category", length = 50)
+    private String category;
 }

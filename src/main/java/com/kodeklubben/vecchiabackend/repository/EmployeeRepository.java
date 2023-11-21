@@ -1,8 +1,7 @@
-package com.example.vecchiabackend.repository;
+package com.kodeklubben.vecchiabackend.repository;
 
 
-import com.example.vecchiabackend.model.Employee;
-import com.example.vecchiabackend.model.MenuItem;
+import com.kodeklubben.vecchiabackend.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
