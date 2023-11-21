@@ -1,0 +1,12 @@
+package com.example.vecchiabackend.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+
+  @Autowired
+  com.example.vecchiabackend.repository.OrderRepository OrderRepository;
+
+}
