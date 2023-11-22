@@ -1,21 +1,25 @@
 package com.kodeklubben.vecchiabackend;
 
-import com.kodeklubben.vecchiabackend.service.MenuItemService;
+import com.kodeklubben.vecchiabackend.controller.MenuItemController;
+import com.kodeklubben.vecchiabackend.model.MenuItem;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+import java.util.ArrayList;
+
 @SpringBootTest
 public class MenuItemsTest {
 
   @Autowired
-  private MenuItemService menuItemService;
+  private MenuItemController menuItemController;
 
   @Test
-  public void testSomeMethod() {
-    // Your test logic using myService
+  public void findAll() {
+    final ArrayList<MenuItem> menuItems = menuItemController.getAllMenuItems().getBody();
+    System.out.println(menuItems);
+    assert menuItems != null;
   }
+
+
 }
