@@ -47,4 +47,10 @@ public class EmployeeController {
     return new ResponseEntity<>(updatedEmployee, HttpStatus.CREATED);
   }
 
+    @PostMapping(value ="/employees/login", consumes = "application/json")
+    public ResponseEntity<Employee> login(@RequestBody Employee employee) {
+        Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
+        return new ResponseEntity<>(loggedInEmployee, HttpStatus.CREATED);
+    }
+
 }

@@ -15,6 +15,10 @@ public class EmployeeService {
   @Autowired
   EmployeeRepository employeeRepository;
 
+    public Employee login(String email, String password) {
+        return employeeRepository.findByEmailAndPassword(email, password);
+    }
+
   public ArrayList<Employee> getAll(){
     return (ArrayList<Employee>) employeeRepository.findAll();
   }
