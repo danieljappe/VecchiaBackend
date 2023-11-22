@@ -1,11 +1,9 @@
 package com.kodeklubben.vecchiabackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,7 +15,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int employeeID;
+    private long employeeID;
 
     @Column(name = "FirstName")
     private String firstName;
