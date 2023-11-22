@@ -1,11 +1,9 @@
 package com.kodeklubben.vecchiabackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,7 +15,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID")
-    private int itemID;
+    private long itemID;
 
     @Column(name = "Name", length = 100)
     private String name;
