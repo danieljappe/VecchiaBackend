@@ -1,6 +1,6 @@
-package com.example.vecchiabackend.repository;
+package com.kodeklubben.vecchiabackend.repository;
 
-import com.example.vecchiabackend.model.Order;
+import com.kodeklubben.vecchiabackend.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

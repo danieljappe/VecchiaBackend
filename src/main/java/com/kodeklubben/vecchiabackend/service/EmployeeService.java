@@ -1,6 +1,6 @@
-package com.example.vecchiabackend.service;
+package com.kodeklubben.vecchiabackend.service;
 
-import com.example.vecchiabackend.repository.EmployeeRepository;
+import com.kodeklubben.vecchiabackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
