@@ -20,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
+    /*
     @Bean
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -59,5 +60,6 @@ public class WebSecurityConfig {
 
         return new InMemoryUserDetailsManager(user1, admin);
     }
+    */
 
 }
