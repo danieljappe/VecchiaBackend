@@ -15,7 +15,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("https://vecchia-78929.web.app");
-        config.addAllowedOrigin("http://127.0.0.1:5500");
+        config.addAllowedOrigin("127.0.0.1:5500");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
