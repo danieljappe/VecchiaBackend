@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://vecchia-78929.web.app"})
 public class EmployeeController {
 
   @Autowired
@@ -48,11 +48,11 @@ public class EmployeeController {
     return new ResponseEntity<>(updatedEmployee, HttpStatus.CREATED);
   }
 
-  @PreAuthorize("hasRole('ADMIN')")
-  @PostMapping(value ="/employees/login", consumes = "application/json")
+  /*@PreAuthorize("hasRole('ADMIN')")*/
+  @PostMapping(value = "/employees/login", consumes = "application/json")
   public ResponseEntity<Employee> login(@RequestBody Employee employee) {
-      Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
-      return new ResponseEntity<>(loggedInEmployee, HttpStatus.CREATED);
+    Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
+    return new ResponseEntity<>(loggedInEmployee, HttpStatus.CREATED);
   }
 
 }
