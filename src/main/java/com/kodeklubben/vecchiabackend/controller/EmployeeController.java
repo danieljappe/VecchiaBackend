@@ -48,7 +48,7 @@ public class EmployeeController {
     return new ResponseEntity<>(updatedEmployee, HttpStatus.CREATED);
   }
 
-  @PreAuthorize("hasRole('ADMIN')")
+  /*@PreAuthorize("hasRole('ADMIN')")*/
   @PostMapping(value ="/employees/login", consumes = "application/json")
   public ResponseEntity<Employee> login(@RequestBody Employee employee) {
       Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
