@@ -3,6 +3,7 @@ package com.kodeklubben.vecchiabackend.controller;
 import com.kodeklubben.vecchiabackend.model.MenuItem;
 import com.kodeklubben.vecchiabackend.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,10 +46,22 @@ public class MenuItemController {
     return new ResponseEntity<>(deleted, HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping(value ="/menuItems/update", consumes = "application/json")
-  public ResponseEntity<MenuItem> update(@RequestBody MenuItem menuItem) {
-    MenuItem updatedMenuItem = menuItemService.updateMenuItem(menuItem);
-    return new ResponseEntity<>(updatedMenuItem, HttpStatus.CREATED);
+  @PutMapping("/menuItems/update/{id}")
+  public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "id") long id, @RequestBody MenuItem menuItemDetails) {
+    // Check if the MenuItem with the given id exists
+    MenuItem menuItem = menuItemService.findById(id)
+            .orElseThrow(() -> new ExpressionException("MenuItem not found with id " + id));
+
+    // Update the MenuItem details
+    menuItem.setName(menuItemDetails.getName());
+    menuItem.setDescription(menuItemDetails.getDescription());
+    menuItem.setPrice(menuItemDetails.getPrice());
+    menuItem.setCategory(menuItemDetails.getCategory());
+
+    // Save the updated MenuItem
+    MenuItem updatedMenuItem = menuItemService.save(menuItem);
+
+    return ResponseEntity.ok(updatedMenuItem);
   }
 
 }
