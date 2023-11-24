@@ -47,7 +47,7 @@ public class MenuItemController {
 
   @PutMapping(value ="/menuItems/update", consumes = "application/json")
   public ResponseEntity<MenuItem> update(@RequestBody MenuItem menuItem) {
-    MenuItem updatedMenuItem = menuItemService.update(menuItem);
+    MenuItem updatedMenuItem = menuItemService.updateMenuItem(menuItem);
     return new ResponseEntity<>(updatedMenuItem, HttpStatus.CREATED);
   }
 

@@ -37,9 +37,16 @@ public class MenuItemService {
     }
   }
 
-  public MenuItem update(MenuItem menuItem) {
-    menuItemRepository.save(menuItem);
-    return menuItem;
+  public MenuItem updateMenuItem(MenuItem menuItem) {
+    // Check if the item with the given ID exists in the database
+    if (menuItemRepository.existsById(menuItem.getID())) {
+      // Update the existing item
+      return menuItemRepository.save(menuItem);
+    } else {
+      // Handle the case where the item with the given ID does not exist
+      // You might throw an exception or handle it in another way based on your requirements
+      return null;
+    }
   }
 
 
