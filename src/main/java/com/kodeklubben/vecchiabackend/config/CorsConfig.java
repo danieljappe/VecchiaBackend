@@ -16,6 +16,7 @@ public class CorsConfig {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("https://vecchia-78929.web.app");
         config.addAllowedOrigin("127.0.0.1:5500");
+        config.addAllowedOrigin("https://vecchiabackend.azurewebsites.net/menuItems/1");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
