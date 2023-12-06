@@ -50,7 +50,7 @@ public class MenuItemController {
   public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "id") long id, @RequestBody MenuItem menuItemDetails) {
     // Check if the MenuItem with the given id exists
     MenuItem menuItem = menuItemService.findById(id)
-            .orElseThrow(() -> new ExpressionException("MenuItem not found with id " + id));
+            .orElseThrow(() -> new ExpressionException("MenuItem not found with id " + id)); //todo: check for notFound exception
 
     // Update the MenuItem details
     menuItem.setName(menuItemDetails.getName());
