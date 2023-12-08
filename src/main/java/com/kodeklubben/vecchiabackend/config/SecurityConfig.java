@@ -45,7 +45,11 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
             .csrf(csrf -> csrf.disable())
-            .authorizeRequests(auth -> auth.anyRequest().authenticated())
+            .authorizeRequests(
+                    auth -> auth
+                            .requestMatchers("/menuItems", "/orders").permitAll() // Allow access without authentication
+                            .anyRequest().authenticated())
+
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .httpBasic(withDefaults())
