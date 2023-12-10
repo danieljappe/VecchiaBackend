@@ -78,7 +78,7 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("https://vecchiabackend.azurewebsites.net", "https://vecchia-78929.web.app", "127.0.0.1:5500"));
+    configuration.setAllowedOrigins(Arrays.asList("https://vecchiabackend.azurewebsites.net", "https://vecchia-78929.web.app/", "https://127.0.0.1:5500"));
     // ... other CORS configurations
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
