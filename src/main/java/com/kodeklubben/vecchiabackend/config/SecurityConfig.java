@@ -80,7 +80,8 @@ public class SecurityConfig {
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowedOrigins(Arrays.asList("https://vecchiabackend.azurewebsites.net", "https://vecchia-78929.web.app/", "https://127.0.0.1:5500"));
     // ... other CORS configurations
-
+    configuration.addAllowedOrigin("https://vecchia-78929.web.app");
+    configuration.addAllowedOrigin("https://127.0.0.1:5500");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
 
