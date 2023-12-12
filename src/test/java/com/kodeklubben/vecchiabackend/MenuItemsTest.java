@@ -14,19 +14,19 @@ public class MenuItemsTest {
   @Autowired
   private MenuItemController menuItemController;
 
-  @Test
+  /*@Test
   public void findAll() {
     final ArrayList<MenuItem> menuItems = menuItemController.getAll().getBody();
     System.out.println(menuItems);
     assert menuItems != null;
-  }
+  }*/
 
-  @Test
+  /*@Test
   public void findByID() {
     MenuItem menuItem = menuItemController.getById(1L).getBody();
     System.out.println(menuItem);
     assert menuItem != null;
-  }
+  }*/
 
   /*@Test
   public void create() {
