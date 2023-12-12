@@ -54,7 +54,7 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(
                     auth -> auth
-                            .requestMatchers("/menuItems", "/orders", "/employees/login").permitAll() // Allow access without authentication
+                            .requestMatchers("/menuItems", "/orders", "/employees/login", "/token").permitAll() // Allow access without authentication
                             .anyRequest().authenticated())
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
