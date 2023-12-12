@@ -79,6 +79,7 @@ public class SecurityConfig {
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.addAllowedOrigin("https://vecchia-78929.web.app");
     configuration.addAllowedOrigin("https://127.0.0.1:5500");
+    configuration.addAllowedOrigin("http://127.0.0.1:5500");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
     return source;

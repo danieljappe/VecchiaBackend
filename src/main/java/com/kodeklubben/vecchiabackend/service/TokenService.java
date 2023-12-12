@@ -19,21 +19,17 @@ public class TokenService {
     this.jwtEncoder = jwtEncoder;
   }
 
-  public String generateToken(Authentication authentication) {
+  public String generateToken(String username) {
     Date now = new Date();
-    String scope = authentication.getAuthorities().stream()
-            .map(GrantedAuthority::getAuthority)
-            .collect(Collectors.joining(" "));
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(now);
-    calendar.add(Calendar.HOUR_OF_DAY, 1);
+    calendar.add(Calendar.HOUR, 1);
     Date expiration = calendar.getTime();
     JwtClaimsSet claims = JwtClaimsSet.builder()
             .issuer("self")
             .issuedAt(now.toInstant())
             .expiresAt(expiration.toInstant())
-            .subject(authentication.getName())
-            .claim("scope", scope)
+            .subject(username)
             .build();
     return this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
   }
