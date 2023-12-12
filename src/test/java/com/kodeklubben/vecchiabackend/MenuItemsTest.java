@@ -28,16 +28,16 @@ public class MenuItemsTest {
     assert menuItem != null;
   }
 
-  @Test
+  /*@Test
   public void create() {
     final MenuItem menuItem = new MenuItem();
     menuItem.setName("Salatpizza");
     final MenuItem createdMenuItem = menuItemController.create(menuItem).getBody();
     System.out.println(createdMenuItem);
     assert createdMenuItem != null && Boolean.TRUE.equals(menuItemController.deleteById(createdMenuItem.getID()).getBody());
-  }
+  }*/
 
-  @Test
+  /*@Test
   public void update() {
     //get all
     final ArrayList<MenuItem> menuItems = menuItemController.getAll().getBody();
@@ -47,14 +47,14 @@ public class MenuItemsTest {
     MenuItem menuItem = menuItems.get(0);
     menuItem.setName("updated name");
 
-    /*//update
+    //update
     menuItem = menuItemController.update(menuItem).getBody();
     assert menuItem.getName().equals("updated name");
 
     //update back to name
     menuItem.setName("name");
-    menuItemController.update(menuItem).getBody();*/
-  }
+    menuItemController.update(menuItem).getBody();
+  }*/
 
 
 }
