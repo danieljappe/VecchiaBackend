@@ -1,9 +1,7 @@
 package com.kodeklubben.vecchiabackend.controller;
 
-import com.kodeklubben.vecchiabackend.dto.User;
 import com.kodeklubben.vecchiabackend.model.Employee;
 import com.kodeklubben.vecchiabackend.service.EmployeeService;
-import com.kodeklubben.vecchiabackend.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +15,6 @@ public class EmployeeController {
 
   @Autowired
   EmployeeService employeeService;
-  TokenService tokenService;
 
   @GetMapping("/employees")
   @ResponseStatus(HttpStatus.OK)
@@ -52,10 +49,9 @@ public class EmployeeController {
 
   /*@PreAuthorize("hasRole('ADMIN')")*/
   @PostMapping(value = "/employees/login", consumes = "application/json")
-  public ResponseEntity<User> login(@RequestBody Employee employee) {
+  public ResponseEntity<Employee> login(@RequestBody Employee employee) {
     Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
-    User user = new User(loggedInEmployee, tokenService.generateToken(loggedInEmployee.getEmail()));
-    return new ResponseEntity<>(user, HttpStatus.CREATED);
+    return new ResponseEntity<>(loggedInEmployee, HttpStatus.CREATED);
   }
 
 }
