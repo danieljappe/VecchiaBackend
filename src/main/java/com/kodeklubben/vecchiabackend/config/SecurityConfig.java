@@ -54,7 +54,7 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(
                     auth -> auth
-                            .requestMatchers("/menuItems", "/orders", "/token", "/employees/token").permitAll() // Allow access without authentication
+                            .requestMatchers("/menuItems", "/orders", "/token", "/employees/login").permitAll() // Allow access without authentication
                             .anyRequest().authenticated())
 
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
@@ -78,10 +78,9 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("https://vecchiabackend.azurewebsites.net", "https://vecchia-78929.web.app/", "https://127.0.0.1:5500"));
-    // ... other CORS configurations
     configuration.addAllowedOrigin("https://vecchia-78929.web.app");
     configuration.addAllowedOrigin("https://127.0.0.1:5500");
+    configuration.addAllowedOrigin("https://localhost:5500");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
 

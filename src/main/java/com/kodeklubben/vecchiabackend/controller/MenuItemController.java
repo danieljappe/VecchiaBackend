@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://vecchia-78929.web.app", "https://localhost:8080"})
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://vecchia-78929.web.app"})
 public class MenuItemController {
 
   @Autowired

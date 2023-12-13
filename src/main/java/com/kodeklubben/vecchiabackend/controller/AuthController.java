@@ -1,10 +1,8 @@
 package com.kodeklubben.vecchiabackend.controller;
 
-import com.kodeklubben.vecchiabackend.dto.AuthenticationRequest;
 import com.kodeklubben.vecchiabackend.service.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
