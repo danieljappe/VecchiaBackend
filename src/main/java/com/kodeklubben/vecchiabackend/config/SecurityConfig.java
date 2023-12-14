@@ -23,6 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
@@ -78,15 +79,16 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOrigin("https://vecchia-78929.web.app");
-    configuration.addAllowedOrigin("https://127.0.0.1:5500");
-    configuration.addAllowedOrigin("http://127.0.0.1:5500");
-    configuration.addAllowedOrigin("https://localhost:5500");
+    //configuration.addAllowedOrigin("https://vecchia-78929.web.app");
+    //configuration.addAllowedOrigin("https://127.0.0.1:5500");
+    //configuration.addAllowedOrigin("http://127.0.0.1:5500");
+    //configuration.addAllowedOrigin("https://localhost:5500");
+    configuration.addAllowedOrigin("*");
     configuration.addAllowedMethod("*");
+    configuration.addAllowedHeader("*");
     configuration.addAllowedHeader("*");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
-
     return source;
   }
 
