@@ -19,28 +19,28 @@ Both the REST API and the MySQL Database is hosted by Azure. The url for the dep
 
 # Endpoints
 The [Front-end website](https://vecchia-78929.web.app/)'s home page has access to the menu and logging in without a token. The requests used are:
-* > /employees/login
-* > /menuItems
+> /employees/login
+> /menuItems
 
 Users that access this request need a username and a password, and then they get a token:
-* > /token
+> /token
 
 Users that log in, will receive a token to gain access to more:
-* > /menuItems/{id}
-* > /menuItems/create
-* > /menuItems/delete/{itemID}
-* > /menuItems/update/{id}
+> /menuItems/{id}
+> /menuItems/create
+> /menuItems/delete/{itemID}
+> /menuItems/update/{id}
 
-* > /employees
-* > /employees/create
-* > /employees/delete/{id}
-* > /employees/{id}
-* > /employees/update/{id}
+> /employees
+> /employees/create
+> /employees/delete/{id}
+> /employees/{id}
+> /employees/update/{id}
 
-* > /orders
-* > /orders/create
-* > /orders/delete/{itemID}
-* > /orders/{itemID}
-* > /orders/update
+> /orders
+> /orders/create
+> /orders/delete/{itemID}
+> /orders/{itemID}
+> /orders/update
 
 
