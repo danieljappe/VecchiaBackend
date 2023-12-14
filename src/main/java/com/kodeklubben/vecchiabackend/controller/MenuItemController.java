@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class MenuItemController {
 
   @Autowired
@@ -48,20 +48,24 @@ public class MenuItemController {
 
   @PutMapping("/menuItems/update/{id}")
   public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "id") long id, @RequestBody MenuItem menuItemDetails) {
-    // Check if the MenuItem with the given id exists
-    MenuItem menuItem = menuItemService.findById(id)
-            .orElseThrow(() -> new ExpressionException("MenuItem not found with id " + id)); //todo: check for notFound exception
+    Optional<MenuItem> optionalMenuItem = menuItemService.findById(id);
 
-    // Update the MenuItem details
-    menuItem.setName(menuItemDetails.getName());
-    menuItem.setDescription(menuItemDetails.getDescription());
-    menuItem.setPrice(menuItemDetails.getPrice());
-    menuItem.setCategory(menuItemDetails.getCategory());
+    if (optionalMenuItem.isPresent()) {
+      MenuItem menuItem = optionalMenuItem.get();
 
-    // Save the updated MenuItem
-    MenuItem updatedMenuItem = menuItemService.save(menuItem);
+      // Update the MenuItem details
+      menuItem.setName(menuItemDetails.getName());
+      menuItem.setDescription(menuItemDetails.getDescription());
+      menuItem.setPrice(menuItemDetails.getPrice());
+      menuItem.setCategory(menuItemDetails.getCategory());
 
-    return ResponseEntity.ok(updatedMenuItem);
+      // Save the updated MenuItem
+      MenuItem updatedMenuItem = menuItemService.save(menuItem);
+
+      return ResponseEntity.ok(updatedMenuItem);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
 }
