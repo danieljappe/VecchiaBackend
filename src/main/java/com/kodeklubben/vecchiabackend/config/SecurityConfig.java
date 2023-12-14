@@ -48,7 +48,7 @@ public class SecurityConfig {
     return http.cors().and().csrf().disable()
             .authorizeHttpRequests(
                     auth -> auth
-                            .requestMatchers("/menuItems", "/orders", "/token", "/employees/login").permitAll() // Allow access without authentication
+                            .requestMatchers("/menuItems", "/token", "/employees/login").permitAll() // Allow access without authentication
                             .anyRequest().authenticated())
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
