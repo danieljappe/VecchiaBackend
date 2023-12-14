@@ -35,7 +35,4 @@ public class Employee {
     @Column(name = "IsAdmin")
     private boolean isAdmin;
 
-    @Lob
-    @Column(name = "EmployeeImage", columnDefinition="BLOB")
-    private byte[] employeeImage;
 }

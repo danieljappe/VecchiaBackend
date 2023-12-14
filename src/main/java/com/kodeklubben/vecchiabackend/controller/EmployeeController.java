@@ -3,6 +3,7 @@ package com.kodeklubben.vecchiabackend.controller;
 import com.kodeklubben.vecchiabackend.model.Employee;
 import com.kodeklubben.vecchiabackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,25 @@ public class EmployeeController {
     Employee loggedInEmployee = employeeService.login(employee.getEmail(), employee.getPassword());
     return new ResponseEntity<>(loggedInEmployee, HttpStatus.CREATED);
   }
+
+  @PutMapping("/employees/update/{id}")
+  public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") long id, @RequestBody Employee employeeDetails) {
+    // Check if the Employee with the given id exists
+    Employee employee = employeeService.getByID(id)
+            .orElseThrow(() -> new ExpressionException("Employee not found with id " + id)); //todo: check for notFound exception
+
+    // Update the Employee details, excluding admin and id
+    employee.setFirstName(employeeDetails.getFirstName());
+    employee.setLastName(employeeDetails.getLastName());
+    employee.setEmail(employeeDetails.getEmail());
+    employee.setPhone(employeeDetails.getPhone());
+    // Do not update 'employeeID' and 'isAdmin' fields
+
+    // Save the updated Employee
+    Employee updatedEmployee = employeeService.save(employee);
+
+    return ResponseEntity.ok(updatedEmployee);
+  }
+
 
 }

@@ -41,6 +41,11 @@ public class EmployeeService {
     }
   }
 
+  public Employee save(Employee employee) {
+    employeeRepository.save(employee);
+    return employee;
+  }
+
   public Employee update(Employee employee) {
     employeeRepository.save(employee);
     return employee;
