@@ -27,20 +27,31 @@ Users that access this request need a username and a password, and then they get
 
 Users that log in, will receive a token to gain access to more:
 > /menuItems/{id}
+
 > /menuItems/create
+
 > /menuItems/delete/{itemID}
+
 > /menuItems/update/{id}
 
 > /employees
+
 > /employees/create
+
 > /employees/delete/{id}
+
 > /employees/{id}
+
 > /employees/update/{id}
 
 > /orders
+
 > /orders/create
+
 > /orders/delete/{itemID}
+
 > /orders/{itemID}
+
 > /orders/update
 
 
