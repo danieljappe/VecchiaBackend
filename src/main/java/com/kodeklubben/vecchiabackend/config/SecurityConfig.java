@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
@@ -23,10 +22,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-
-import static org.springframework.security.config.Customizer.*;
 
 @Configuration
 @EnableWebSecurity
@@ -47,19 +42,16 @@ public class SecurityConfig {
                     .build()
     );
   }
-  
+
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http
-            .csrf(AbstractHttpConfigurer::disable)
+    return http.cors().and().csrf().disable()
             .authorizeHttpRequests(
                     auth -> auth
                             .requestMatchers("/menuItems", "/orders", "/token", "/employees/login").permitAll() // Allow access without authentication
                             .anyRequest().authenticated())
-
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .httpBasic(withDefaults())
             .build();
   }
 
@@ -78,15 +70,16 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOrigin("https://vecchia-78929.web.app");
-    configuration.addAllowedOrigin("https://127.0.0.1:5500");
-    configuration.addAllowedOrigin("http://127.0.0.1:5500");
-    configuration.addAllowedOrigin("https://localhost:5500");
+    //configuration.addAllowedOrigin("https://vecchia-78929.web.app");
+    //configuration.addAllowedOrigin("https://127.0.0.1:5500");
+    //configuration.addAllowedOrigin("http://127.0.0.1:5500");
+    //configuration.addAllowedOrigin("https://localhost:5500");
+    configuration.addAllowedOrigin("*");
     configuration.addAllowedMethod("*");
+    configuration.addAllowedHeader("*");
     configuration.addAllowedHeader("*");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
-
     return source;
   }
 
