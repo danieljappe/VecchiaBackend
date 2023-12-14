@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://vecchia-78929.web.app"})
 @RestController
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://vecchia-78929.web.app"})
 public class AuthController {
 
   private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
