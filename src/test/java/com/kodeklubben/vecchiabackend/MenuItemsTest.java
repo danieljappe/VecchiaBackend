@@ -14,28 +14,28 @@ public class MenuItemsTest {
   @Autowired
   private MenuItemController menuItemController;
 
-  /*@Test
+  @Test
   public void findAll() {
     final ArrayList<MenuItem> menuItems = menuItemController.getAll().getBody();
     System.out.println(menuItems);
     assert menuItems != null;
-  }*/
+  }
 
-  /*@Test
+  @Test
   public void findByID() {
     MenuItem menuItem = menuItemController.getById(1L).getBody();
     System.out.println(menuItem);
     assert menuItem != null;
-  }*/
+  }
 
-  /*@Test
+  @Test
   public void create() {
     final MenuItem menuItem = new MenuItem();
     menuItem.setName("Salatpizza");
     final MenuItem createdMenuItem = menuItemController.create(menuItem).getBody();
     System.out.println(createdMenuItem);
     assert createdMenuItem != null && Boolean.TRUE.equals(menuItemController.deleteById(createdMenuItem.getID()).getBody());
-  }*/
+  }
 
   /*@Test
   public void update() {
