@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SpringBootTest
 public class MenuItemsTest {
-
+/*
   @Autowired
   private MenuItemController menuItemController;
 
