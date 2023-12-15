@@ -1,15 +1,10 @@
 package com.kodeklubben.vecchiabackend.service;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
-
 import java.util.Calendar;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 @Service
 public class TokenService {

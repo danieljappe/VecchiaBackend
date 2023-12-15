@@ -22,11 +22,8 @@ The [Front-end website](https://vecchia-78929.web.app/)'s home page has access t
 > /employees/login
 
 > /menuItems
-
-Users that access this request need a username and a password, and then they get a token:
-> /token
-
-Users that log in, will receive a token to gain access to more:
+###
+Users that log in, receives a token to gain access to more:
 > /menuItems/{id}
 
 > /menuItems/create

@@ -1,5 +1,6 @@
 package com.kodeklubben.vecchiabackend.controller;
 
+import com.kodeklubben.vecchiabackend.exceptions.*;
 import com.kodeklubben.vecchiabackend.model.Order;
 import com.kodeklubben.vecchiabackend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +20,35 @@ public class OrderController {
   @GetMapping("/orders")
   @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<ArrayList<Order>> getAll(){
-    ArrayList<Order> orders = orderService.getAll();
+    final ArrayList<Order> orders = orderService.getAll();
+    if (orders == null) throw new GetException("Unable to get all orders. Make sure a valid token is provided.");
     return new ResponseEntity<>(orders, HttpStatus.OK);
   }
   @PostMapping(value ="/orders/create", consumes = "application/json")
   public ResponseEntity<Order> create(@RequestBody Order orders) {
-    Order createdOrder = orderService.create(orders);
+    final Order createdOrder = orderService.create(orders);
+    if (createdOrder == null) throw new CreateException(orders, "Make sure a valid token is provided.");
     return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
   }
 
   @DeleteMapping("/orders/delete/{itemID}")
   public ResponseEntity<Boolean> deleteById(@PathVariable("itemID") Long id){
-    boolean deleted = orderService.deleteById(id);
-    return new ResponseEntity<>(deleted, HttpStatus.NO_CONTENT);
+    final boolean deleted = orderService.deleteById(id);
+    if (!deleted) throw new DeleteException(id, "Make sure a valid token is provided");
+    return new ResponseEntity<>(true, HttpStatus.NO_CONTENT);
   }
 
   @GetMapping("/orders/{itemID}")
   @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<Order> getById(@PathVariable("itemID") Long id){
-    Order orders = orderService.getByID(id).get();
+    Order orders = orderService.getByID(id).orElseThrow(() -> new OrderNotFoundException(id));
     return new ResponseEntity<>(orders, HttpStatus.OK);
   }
 
   @PostMapping(value ="/orders/update", consumes = "application/json")
   public ResponseEntity<Order> update(@RequestBody Order orders) {
-    Order updatedOrder = orderService.update(orders);
+    final Order updatedOrder = orderService.update(orders);
+    if (updatedOrder == null) throw new UpdateException(orders, "Make sure a valid token is provided");
     return new ResponseEntity<>(updatedOrder, HttpStatus.CREATED);
   }
   

@@ -34,21 +34,11 @@ public class SecurityConfig {
   }
 
   @Bean
-  public InMemoryUserDetailsManager users() {
-    return new InMemoryUserDetailsManager(
-            User.withUsername("kodeklubben")
-                    .password("{noop}password")
-                    .authorities("read")
-                    .build()
-    );
-  }
-
-  @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.cors().and().csrf().disable()
             .authorizeHttpRequests(
                     auth -> auth
-                            .requestMatchers("/menuItems", "/token", "/employees/login").permitAll() // Allow access without authentication
+                            .requestMatchers("/menuItems", "/employees/login").permitAll() // Allow access without authentication
                             .anyRequest().authenticated())
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -70,10 +60,6 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    //configuration.addAllowedOrigin("https://vecchia-78929.web.app");
-    //configuration.addAllowedOrigin("https://127.0.0.1:5500");
-    //configuration.addAllowedOrigin("http://127.0.0.1:5500");
-    //configuration.addAllowedOrigin("https://localhost:5500");
     configuration.addAllowedOrigin("*");
     configuration.addAllowedMethod("*");
     configuration.addAllowedHeader("*");
